@@ -1,0 +1,25 @@
+Package: NVI_dynamic_linear_models
+Title: NVI Dynamic Linear Models.
+Version: 0.1
+Date: 2025-01-27
+Authors@R: c(person(given = "Lars Erik",
+            family = "Gangsei",
+            role = c("aut","cph","cre"),
+            email = "lars.erik.gangsei@vetinst.no"))
+Maintainer: Lars Erik Gangsei <lars.erik.gangsei@vetinst.no>
+Description: R functions for evaluating Dynamic Linear Models.
+URL: https://github.com/NorwegianVeterinaryInstitute/NVI_dynamic_linear_models
+License: BSD 3-Clause License
+Imports:
+  lubridate,
+  ggplot2,
+  tidyverse,
+  Matrix,
+  rSPDE
+Suggests:
+Remotes: 
+LazyData: true
+Encoding: UTF-8
+Language: en-GB
+Roxygen: list(markdown = FALSE)
+RoxygenNote: 7.3.1
