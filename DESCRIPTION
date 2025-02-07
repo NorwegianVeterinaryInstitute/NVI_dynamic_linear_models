@@ -16,8 +16,6 @@ Imports:
   tidyverse,
   Matrix,
   rSPDE
-Suggests:
-Remotes: 
 LazyData: true
 Encoding: UTF-8
 Language: en-GB
