@@ -1,7 +1,7 @@
 Package: NVI.dynamic.linear.models
 Title: NVI Dynamic Linear Models.
-Version: 0.1
-Date: 2025-01-27
+Version: 0.1.1
+Date: 2025-02-11
 Authors@R: c(person(given = "Lars Erik",
             family = "Gangsei",
             role = c("aut","cph","cre"),

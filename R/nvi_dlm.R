@@ -106,7 +106,6 @@ nvi_dlm <- function(systemform = NULL,errorform = NULL,
     FF <- design_matrices$FF
     GG <- design_matrices$GG
     
-    
     resp_name <- as.character(systemform)[2]
     
     if(is.element('t',names(data)))
@@ -141,7 +140,7 @@ nvi_dlm <- function(systemform = NULL,errorform = NULL,
     }
   }
   
-  
+ 
   nn <- dim(data)[1]
   qq <- dim(FF)[2]
   
@@ -206,6 +205,7 @@ nvi_dlm <- function(systemform = NULL,errorform = NULL,
     Res$QT[tt,idxOK,idxOK] <- Qt
     
     # Posterior for theta at time t
+    
     Qt_inv <- eigen(Qt,symmetric = TRUE)
     Qt_inv$vectors <- Qt_inv$vectors[,Qt_inv$values>10^(-99)]
     Qt_values <- Qt_inv$values[Qt_inv$values>10^(-99)]

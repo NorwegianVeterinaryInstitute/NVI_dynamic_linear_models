@@ -165,6 +165,7 @@ nvi_dlm_design <- function(systemform = formula(.~ 0 + harmonic(waves) +
   }else{
     uniq_waves <- FALSE}
   
+  
   nested_names <- systemterms[grep('nested',systemterms)]
   if(length(nested_names)==0){nested_names <- NULL}else
     {nested_names <- gsub(' ','',
@@ -180,8 +181,7 @@ nvi_dlm_design <- function(systemform = formula(.~ 0 + harmonic(waves) +
   
   trend <- attributes(terms(systemform))$intercept ==1
   
-  
-  
+
   # Find the number of locations (qq)
   if(!is.null(nested_names))
   {qq <- length(data[[nested_names[1]]])
@@ -191,6 +191,8 @@ nvi_dlm_design <- function(systemform = formula(.~ 0 + harmonic(waves) +
         if(response_name!="."){
           qq <- dim(as.matrix(data[[response_name]]))[2]
         }else{qq <- max(data$q,1)}}}
+  
+  
   
   # Check if nested is part of the formula
   if(is.null(nested_names))
@@ -207,6 +209,7 @@ nvi_dlm_design <- function(systemform = formula(.~ 0 + harmonic(waves) +
         colnames(WW) <- rownames(WW) <- 'main_effect'
   }
  
+  
   # Set the second block, i.e. trend if TRUE
   if(trend==TRUE)
   {
@@ -249,6 +252,7 @@ nvi_dlm_design <- function(systemform = formula(.~ 0 + harmonic(waves) +
       colnames(GG) <- rownames(GG) <- rownames(FF) <- 
         colnames(WW) <- rownames(WW) <- c(t_names,h_names)
     }
+  
   
       # Set the factors, this code is not to good, so far only for two nested
     # factors. LEG 17.01.2025
@@ -338,15 +342,15 @@ nvi_dlm_design <- function(systemform = formula(.~ 0 + harmonic(waves) +
     }
   }
   
-  
   if(!is.null(matern_name))
   {
     
   dist <- sp::spDists(data[[matern_name]],longlat=TRUE)
-  VV <- VV + rSPDE::matern.covariance(dist,
+  VV <- rSPDE::matern.covariance(dist,
                 kappa = varcomps[[matern_name]]$kappa, 
                 nu = varcomps[[matern_name]]$nu,
                 sigma = varcomps$error$main) 
+  VV[is.na(VV)] <- 0
   }
   
   if(isnullw==TRUE){WW <- NULL}else{WW <- as.matrix(WW)}
